@@ -1,0 +1,14 @@
+# Start from debian linux image (DockerHub)
+FROM debian:stable
+
+# Add custom label
+LABEL maintainer "Gerard gerardts9@gmail.com" \
+      version "0.1" \
+      description "Hands-On Docker"
+
+# Install R (after apt-get update)
+RUN apt-get update && apt-get install -y r-base
+
+# Install R package 'ggplot2'
+RUN R -e 'install.packages("ggplot2", repos = "http://cloud.r-project.org/")'
+
